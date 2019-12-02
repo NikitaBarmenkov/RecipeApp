@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/ingredient_to_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/ingredient_name_to_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/ingredient_quantity_to_view"/>
+
+        <TextView
+            android:id="@+id/ingredient_quantity_to_view"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ingredient_to_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/ingredient_name_to_edit"
+            android:layout_width="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_height="wrap_content"
+            android:hint="ингредиент"
+            android:layout_toStartOf="@id/ingredient_quantity_to_edit" />
+
+        <EditText
+            android:id="@+id/ingredient_quantity_to_edit"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="кол-во"
+            android:gravity="end"
+            android:layout_toStartOf="@+id/ingredient_buttons_container"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/ingredient_buttons_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true">
+
+            <ImageButton
+                android:id="@+id/ingredient_accept_but"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/check_symbol"
+                android:background="@android:color/transparent"/>
+
+            <ImageButton
+                android:id="@+id/ingredient_delete_but"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/clear"
+                android:background="@android:color/transparent"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
