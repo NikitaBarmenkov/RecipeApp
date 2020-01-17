@@ -1,8 +1,6 @@
 package com.example.povar;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -13,26 +11,14 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.povar.Adapters.DishIngredientsAdapter;
-import com.example.povar.Adapters.DishPageAdapter;
 import com.example.povar.DishActivityFragments.DishInfoFragment;
 import com.example.povar.DishActivityFragments.DishIngredientsFragment;
 import com.example.povar.DishActivityFragments.DishRecipeFragment;
@@ -43,8 +29,6 @@ import com.example.povar.models.Ingredient;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.Serializable;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,11 +88,6 @@ public class DishActivity extends AppCompatActivity implements DishIngredientsAd
                 break;
         }
         navigation.setSelectedItemId(R.id.navigation_info);
-
-        //adapter = SetIngredientsAdapter();
-        //rv_dish_ingredients.setAdapter(adapter);
-
-        //initialVewPager(dish.GetImage());
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -209,31 +188,6 @@ public class DishActivity extends AppCompatActivity implements DishIngredientsAd
             DishActivity.this.startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void initialVewPager(int dish_image) {
-        LayoutInflater inflater = LayoutInflater.from(this);
-        List<View> pages = new ArrayList<View>();
-
-        View page = inflater.inflate(R.layout.dish_image_fragment, null);
-        ImageView imageView = (ImageView) page.findViewById(R.id.carousel_image);
-        imageView.setImageResource(dish_image);
-        pages.add(page);
-
-        page = inflater.inflate(R.layout.dish_image_fragment, null);
-        imageView = (ImageView) page.findViewById(R.id.carousel_image);
-        imageView.setImageResource(R.drawable.placeholder);
-        pages.add(page);
-
-        page = inflater.inflate(R.layout.dish_image_fragment, null);
-        imageView = (ImageView) page.findViewById(R.id.carousel_image);
-        imageView.setImageResource(R.drawable.placeholder);
-        pages.add(page);
-
-        DishPageAdapter pagerAdapter = new DishPageAdapter(pages);
-        //ViewPager viewPager = (ViewPager)findViewById(R.id.vpager);
-        //viewPager.setAdapter(pagerAdapter);
-        //viewPager.setCurrentItem(0);
     }
 
     @Override

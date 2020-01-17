@@ -74,7 +74,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         notifyDataSetChanged();
     }
 
-    private List<Dish> RemoveClones() {
+    public List<Dish> RemoveClones() {
         for (int i = 0; i < dishes.size() - 1; i++) {
             for (int j = i + 1; j < dishes.size(); j++) {
                 if (dishes.get(i).GetName().equals(dishes.get(j).GetName())) {

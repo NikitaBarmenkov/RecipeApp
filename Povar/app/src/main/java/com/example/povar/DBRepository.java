@@ -22,6 +22,8 @@ public class DBRepository implements Serializable {
     private static transient DataBaseHelper dbHelper;
     private static transient SQLiteDatabase database;
 
+    public DBRepository() {}
+
     public DBRepository(Context context){
         dbHelper = new DataBaseHelper(context);
 
@@ -139,14 +141,14 @@ public class DBRepository implements Serializable {
                 cursor = null;
                 break;
             case 1://поиск по ингредиетам и названию
-                cursor = database.rawQuery(String.format("SELECT Dish._id, Dish.name, Dish.rating, Dish.image, Dish.kkal, Dish.category_id" +
+                cursor = database.rawQuery(String.format("SELECT Dish._id, Dish.name, Dish.rating, Dish.image, Dish.kkal, Dish.recipe, Dish.category_id" +
                         " FROM Dish, DishIngredient WHERE Dish._id = DishIngredient.dish_id AND DishIngredient.ingredient_id = %s AND Dish.name like \'%%%s%%\'", String.valueOf(ingredient_id), String.valueOf(dish_name)), null);
                 break;
             case 2://поиск по названию
                 cursor = database.rawQuery(String.format("SELECT * FROM Dish WHERE Dish.name like \'%%%s%%\'", String.valueOf(dish_name)), null);
                 break;
             case 3://только поиск по ингредиентам
-                cursor = database.rawQuery(String.format("SELECT Dish._id, Dish.name, Dish.rating, Dish.image, Dish.kkal, Dish.category_id FROM Dish, DishIngredient WHERE Dish._id = DishIngredient.dish_id AND DishIngredient.ingredient_id = %s", String.valueOf(ingredient_id)), null);
+                cursor = database.rawQuery(String.format("SELECT Dish._id, Dish.name, Dish.rating, Dish.image, Dish.kkal, Dish.recipe, Dish.category_id FROM Dish, DishIngredient WHERE Dish._id = DishIngredient.dish_id AND DishIngredient.ingredient_id = %s", String.valueOf(ingredient_id)), null);
                 break;
         }
         if(cursor.moveToFirst()){

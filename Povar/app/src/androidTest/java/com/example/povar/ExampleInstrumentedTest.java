@@ -36,9 +36,6 @@ public class ExampleInstrumentedTest {
     public final ActivityTestRule<MainActivity> mActivityRule =
             new ActivityTestRule<>(MainActivity.class, true, false);
 
-
-
-
     //поиск по ингредиенту
     @Test
     public void Test1() {
@@ -53,7 +50,7 @@ public class ExampleInstrumentedTest {
 
         //Задаю строки для нахождения ингредиентов по именам в бд
         List<String> strings = new ArrayList<>();
-        strings.add("помидор");
+        strings.add("Помидоры");
 
         List<Ingredient> searchingredients = new ArrayList<>();
         searchingredients = GetIngredients(strings, db);//получаю ингредиенты по строкам выше
@@ -62,11 +59,9 @@ public class ExampleInstrumentedTest {
         //Ожидаемый результат
         //Задаю строки для нахождения блюд по именам в бд
         List<String> exdishes = new ArrayList<>();
-        exdishes.add("Разносолы");
-        exdishes.add("Цыплёнок табака");
-        exdishes.add("Котлета по-киевски");
+        exdishes.add("Рататуй");
+        exdishes.add("Салат Цезарь");
         List<String> dishes = new ArrayList<>();
-        List<Dish> expecteddishes = GetDishes(exdishes, db);//получаю блюда по именам выше
 
         //инициализация адаптера
         SearchResultsAdapter adapter = new SearchResultsAdapter(activity.getApplicationContext(), new SearchResultsAdapter.OnDishListener() {
@@ -104,10 +99,8 @@ public class ExampleInstrumentedTest {
         //Ожидаемый результат
         //Задаю строки для нахождения блюд по именам в бд
         List<String> exdishes = new ArrayList<>();
-        exdishes.add("Тар-тар из лосося");
-        exdishes.add("Фиеста");
-        exdishes.add("Цыплёнок табака");
-        exdishes.add("Котлета по-киевски");
+        exdishes.add("Рататуй");
+        exdishes.add("Азу по-татарски");
         List<String> dishes = new ArrayList<>();
         List<Dish> expecteddishes = GetDishes(exdishes, db);//получаю блюда по именам выше
 
@@ -139,8 +132,8 @@ public class ExampleInstrumentedTest {
 
         //Задаю строки для нахождения ингредиентов по именам в бд
         List<String> strings = new ArrayList<>();
-        strings.add("семга");
-        strings.add("сыр");
+        strings.add("Сахар");
+        strings.add("Яйцо куриное");
 
         List<Ingredient> searchingredients = new ArrayList<>();
         searchingredients = GetIngredients(strings, db);//получаю ингредиенты по строкам выше
@@ -149,9 +142,9 @@ public class ExampleInstrumentedTest {
         //Ожидаемый результат
         //Задаю строки для нахождения блюд по именам в бд
         List<String> exdishes = new ArrayList<>();
-        exdishes.add("Жемчужина");
-        exdishes.add("Фиеста");
-        exdishes.add("Цыплёнок табака");
+        exdishes.add("Рататуй");
+        exdishes.add("Шарлотка");
+        //exdishes.add("Тонкие блины на молоке");
         List<String> dishes = new ArrayList<>();
         List<Dish> expecteddishes = GetDishes(exdishes, db);//получаю блюда по именам выше
 
@@ -179,11 +172,11 @@ public class ExampleInstrumentedTest {
         DBRepository db = new DBRepository(activity.getApplicationContext());
 
         //текст для поиска по названию
-        String textToType="ри";
+        String textToType="шар";
 
         //Задаю строки для нахождения ингредиентов по именам в бд
         List<String> strings = new ArrayList<>();
-        strings.add("лосось");
+        strings.add("Пшеничная мука");
 
         List<Ingredient> searchingredients = new ArrayList<>();
         searchingredients = GetIngredients(strings, db);//получаю ингредиенты по строкам выше
@@ -192,7 +185,7 @@ public class ExampleInstrumentedTest {
         //Ожидаемый результат
         //Задаю строки для нахождения блюд по именам в бд
         List<String> exdishes = new ArrayList<>();
-        exdishes.add("Рыбное трио");
+        exdishes.add("Шарлотка");
         List<String> dishes = new ArrayList<>();
         List<Dish> expecteddishes = GetDishes(exdishes, db);//получаю блюда по именам выше
 
@@ -220,12 +213,12 @@ public class ExampleInstrumentedTest {
         DBRepository db = new DBRepository(activity.getApplicationContext());
 
         //текст для поиска по названию
-        String textToType="та";
+        String textToType="о";
 
         //Задаю строки для нахождения ингредиентов по именам в бд
         List<String> strings = new ArrayList<>();
-        strings.add("семга");
-        strings.add("сыр");
+        strings.add("Сахар");
+        strings.add("Яйцо куриное");
 
         List<Ingredient> searchingredients = new ArrayList<>();
         searchingredients = GetIngredients(strings, db);//получаю ингредиенты по строкам выше
@@ -234,8 +227,8 @@ public class ExampleInstrumentedTest {
         //Ожидаемый результат
         //Задаю строки для нахождения блюд по именам в бд
         List<String> exdishes = new ArrayList<>();
-        exdishes.add("Фиеста");
-        exdishes.add("Цыплёнок табака");
+        exdishes.add("Шарлотка");
+        exdishes.add("Тонкие блины на молоке");
         List<String> dishes = new ArrayList<>();
         List<Dish> expecteddishes = GetDishes(exdishes, db);//получаю блюда по именам выше
 

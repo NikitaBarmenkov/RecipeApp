@@ -19,6 +19,10 @@ public class Dish implements Serializable {
 
     public Dish(){}
 
+    public Dish(String name) {
+        this.name = name;
+    }
+
     public Dish(int id, @NonNull String name, double rating, byte[] image, double kkal, String recipe, int category_id){
         this.id = id;
         this.name=name;
@@ -33,8 +37,14 @@ public class Dish implements Serializable {
         return this.id;
     }
 
-    public void SetName(@NonNull String Name) {
+    public void SetName(String Name) {
+        Name = setFirstLetter(Name);
         this.name = Name;
+    }
+
+    public String setFirstLetter(String s) {
+        s = s.substring(0, 1).toUpperCase() + s.substring(1, s.length());
+        return s;
     }
 
     public String GetName() {
@@ -66,7 +76,15 @@ public class Dish implements Serializable {
     public int GetCategory() { return this.category_id; }
 
     public void SetRecipe(String recipe) {
+        //recipe = setStepText(recipe);
         this.recipe = recipe;
+    }
+
+    public String setStepText(String s) {
+        if (s.matches("(.*)Шаг(.*)") || s.matches("Шаг(.*)")) {
+
+        }
+        return "";
     }
 
     public String GetRecipe() {

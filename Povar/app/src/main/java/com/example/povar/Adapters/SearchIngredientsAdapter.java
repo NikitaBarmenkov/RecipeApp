@@ -102,8 +102,11 @@ public class SearchIngredientsAdapter extends RecyclerView.Adapter<SearchIngredi
                     delBut.setVisibility(View.VISIBLE);
                     nameView.setEnabled(false);
 
+                    Ingredient i = (Ingredient) parent.getItemAtPosition(position);
+
+                    allingredients.remove(i);
                     ingredients.remove(ingredients.size() - 1);
-                    ingredients.add(ingredients_to_searchAdapter.getItem(0));
+                    ingredients.add(i);
                     Listener.onIngredientAction();
                     ingredients.add(new Ingredient(""));
                     notifyDataSetChanged();
@@ -117,6 +120,10 @@ public class SearchIngredientsAdapter extends RecyclerView.Adapter<SearchIngredi
         public void bind(final Ingredient i) {
             nameView.setInputType(InputType.TYPE_CLASS_TEXT);
             nameView.setText(i.GetName());
+
+            ingredients_to_searchAdapter = new ArrayAdapter<Ingredient>(context, android.R.layout.simple_list_item_1, allingredients);
+            nameView.setAdapter(ingredients_to_searchAdapter);
+
             delBut.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -124,6 +131,7 @@ public class SearchIngredientsAdapter extends RecyclerView.Adapter<SearchIngredi
                     nameViewbuf = (AutoCompleteTextView) viewItem.findViewById(R.id.ingredient_name_text);
 
                     ingredients.remove(i);
+                    allingredients.add(i);
                     ingredients.remove(ingredients.size() - 1);//удалить последний ингредиент, так как он еще не добавлен
                     Listener.onIngredientAction();//поменять предложения в списке поиска
                     ingredients.add(new Ingredient(nameViewbuf.getText().toString()));
@@ -167,6 +175,7 @@ public class SearchIngredientsAdapter extends RecyclerView.Adapter<SearchIngredi
                             linlayout.setBackground(ContextCompat.getDrawable(context, R.drawable.rounded_corners));
                             delBut.setVisibility(View.VISIBLE);
                             nameView.setEnabled(false);
+                            allingredients.remove(i);
 
                             ingredients.remove(ingredients.size() - 1);
                             ingredients.add(ingredients_to_searchAdapter.getItem(0));

@@ -1,7 +1,6 @@
 package com.example.povar;
 
 
-import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -17,8 +16,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.replaceText;
@@ -27,18 +26,17 @@ import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest2 {
+public class MainActivityTest3 {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void mainActivityTest2() {
+    public void mainActivityTest3() {
         ViewInteraction actionMenuItemView = onView(
                 allOf(withId(R.id.action_search), withContentDescription("Поиск"),
                         childAtPosition(
@@ -58,15 +56,9 @@ public class MainActivityTest2 {
                                                 0)),
                                 0),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("п"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("рах"), closeSoftKeyboard());
 
-        DataInteraction appCompatTextView = onData(anything())
-                .inAdapterView(allOf(withId(R.id.search_list),
-                        childAtPosition(
-                                withClassName(is("android.widget.LinearLayout")),
-                                1)))
-                .atPosition(1);
-        appCompatTextView.perform(click());
+        //pressBack();
     }
 
     private static Matcher<View> childAtPosition(

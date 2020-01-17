@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.example.povar.Adapters.CategoryDataAdapter;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements SearchIngredients
     SearchResultsAdapter mAdapter;
     SearchIngredientsAdapter searchIngredientsAdapter;
     MaterialSearchView mSearchView;
-    FloatingActionButton NewDishBut;
+    Button NewDishBut;
 
     List<Category> categories;
     public List<Dish> alldishes;
@@ -180,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements SearchIngredients
                 recyclerView.setVisibility(View.GONE);
                 mList.setVisibility(View.VISIBLE);
                 alldishes = db.getDishes();
+                NewDishBut.setVisibility(View.GONE);
             }
 
             @Override
@@ -187,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements SearchIngredients
                 IngredientsSearch.setVisibility(View.GONE);
                 recyclerView.setVisibility(View.VISIBLE);
                 mList.setVisibility(View.GONE);
+                NewDishBut.setVisibility(View.VISIBLE);
             }
         });
 
